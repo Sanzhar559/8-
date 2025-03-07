@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дорогие дамы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            position: relative;
+            height: 100vh;
+        }
+        .invite-button {
+            font-size: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .no-button {
+            font-size: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 20px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            position: absolute;
+        }
+        .message {
+            font-size: 24px;
+            margin-top: 30px;
+            display: none;
+        }
+        .large-text {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .small-text {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="large-text">🎤🎶 Дорогие дамы! 🎶🎤</h1>
+    <p class="small-text">Айман,Амина,Бақыт,Тоғжан,Шолпан! Мы приглашаем вас на караоке! 💃🎤</p>
+    <p class="small-text">🗓️ <strong>10 марта в 18:00</strong> – не пропустите! 😍</p>
+    <p class="small-text">Ждем вас! 😘✨</p>
+
+    <p class="small-text">Нажмите на кнопку, чтобы ответить:</p>
+
+    <button class="invite-button" onclick="showInviteOptions()">Пригласить</button>
+
+    <div id="invite-options" style="display: none;">
+        <p class="small-text">Если не придёшь на караоке-Мы приедем к тебе и будем петь под дверью ? 🎤🎉</p>
+        <button class="invite-button" onclick="respondYes()">Да, конечно! 🎉</button>
+        <button class="no-button" onclick="respondNo()">Нет, приходите ко мне домой чтобы петь 😔</button>
+    </div>
+
+    <div id="message" class="message"></div>
+
+    <script>
+        function showInviteOptions() {
+            document.getElementById('invite-options').style.display = 'block';
+        }
+
+        function respondYes() {
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('message').innerHTML = 'Ура! Мы ждем тебя на караоке! 🎉🎤';
+        }
+
+        function respondNo() {
+            const noButton = document.querySelector('.no-button');
+            const maxX = window.innerWidth - noButton.offsetWidth; // максимальная позиция по X
+            const maxY = window.innerHeight - noButton.offsetHeight; // максимальная позиция по Y
+
+            // Рандомные координаты
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            // Перемещаем кнопку в случайные координаты
+            noButton.style.left = `${randomX}px`;
+            noButton.style.top = `${randomY}px`;
+        }
+    </script>
+
+</body>
+</html>
